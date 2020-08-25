@@ -55,7 +55,7 @@ async def homepage(request):
         generate_count = 0
 
     gc.collect()
-    return UJSONResponse({'text': text},
+    return UJSONResponse({'text': "Ben Rulz"+text},
                          headers=response_header)
 
 loop = asyncio.get_event_loop()

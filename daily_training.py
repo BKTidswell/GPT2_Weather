@@ -1,7 +1,13 @@
 import gpt_2_simple as gpt2
 from datetime import datetime
 from random import *
-import shutil, os, glob
+import shutil, os, glob, sys
+
+def print_to_stderr(*a): 
+  
+    # Here a is the array holding the objects 
+    # passed as the arguement of the function 
+    print(*a, file = sys.stderr) 
  
 def moveAllFilesinDir(srcDir, dstDir):
 	# Check if both the are directories
@@ -65,7 +71,8 @@ def trainNewModel():
 	              )
 
 	#Step 6: Log this training sessions
-	f = open("training_log.txt", "a")
-	f.write("%s : Trained with %s \n" % (now.strftime("%m/%d/%Y %H:%M:%S"), file_name))
-	f.close()
+	print_to_stderr("%s : Trained with %s \n" % (now.strftime("%m/%d/%Y %H:%M:%S"), file_name)) 
+	# f = open("training_log.txt", "a")
+	# f.write("%s : Trained with %s \n" % (now.strftime("%m/%d/%Y %H:%M:%S"), file_name))
+	# f.close()
 
